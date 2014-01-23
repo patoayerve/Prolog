@@ -1,0 +1,50 @@
+primero
+predicates
+nondeterm ingreso(integer)
+nondeterm opcion(integer,real, real)
+clauses
+
+ingreso(Factura):-write("ingrese un numero escogido "), nl, readint(N), opcion(N,Total,Factura), nl,write("Total",Total).
+opcion(N,Total,Factura):-N = 1, write("su descuento fue de 20% y no se aplica iva"), Total = Factura-(Factura*0.20).
+opcion(N,Total,Factura):-N = 2, write("su descuento fue de 15% y se aplica iva") , Total = ((Factura-(Factura*0.15))+(Factura*0.12)).
+opcion(N,Total,Factura):-N = 3, write("su descuento fue de 18% y no se aplica iva"), Total = Factura-(Factura*0.18).
+goal
+write("ingrese el valor de la factura "), nl, readint(M), ingreso(M).
+
+
+segundo
+
+
+predicates
+/*nondeterm codigo_articulo(integer)
+nondeterm cantidad_vend_lit(integer)
+nondeterm precio_lit(integer)
+nondeterm factura(integer,integer,integer)*/
+nondeterm ingreso(integer,integer,integer)
+
+clauses
+ingreso(Cont,T,TC):- Cont<=5, write("ingrese codigo articulo: "),nl,readint(COD),
+	write("ingrese cantidad vendida por litros: "),nl,readint(CVL),
+	write("ingrese precio por litro: "),nl,readint(PPL),
+ 	Aux1=CVL*PPL, Aux2=Cont+1, Aux3=Aux1+T, COD=1, Aux4=TC+1, ingreso(Aux2,Aux3,Aux4).
+ingreso(Cont,T,TC):- Cont>5, write("sumatoria: ",T),nl, write("Total codigos 1: ",TC).
+
+goal
+ingreso(1,0,0).
+
+
+
+tercero
+
+predicates
+
+
+nondeterm materiasing(integer,integer)
+
+clauses
+
+materiasing(Cont,S):-Cont<=3,Write("ingrese La Nota de la materia",Cont),nl,readint(Nota),Acumula=S+Nota,Aux2=Cont+1,materiasing(Aux2,Acumula).
+materiasing(Cont,S):-Cont>3,Promedios=S/3,Write("Promedio",Promedios).
+
+goal
+materiasing(1,0).

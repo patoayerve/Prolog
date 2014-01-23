@@ -1,0 +1,12 @@
+predicates
+
+
+nondeterm materiasing(integer,integer)
+
+clauses
+
+materiasing(Cont,S):-Cont<=3,Write("ingrese La Nota de la materia",Cont),nl,readint(Nota),Acumula=S+Nota,Aux2=Cont+1,materiasing(Aux2,Acumula).
+materiasing(Cont,S):-Cont>3,Promedios=S/3,Write("Promedio",Promedios).
+
+goal
+materiasing(1,0).

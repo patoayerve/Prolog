@@ -1,0 +1,12 @@
+
+predicates
+nondeterm ingreso(integer)
+nondeterm opcion(integer,real, real)
+clauses
+
+ingreso(Factura):-write("ingrese un numero escogido "), nl, readint(N), opcion(N,Total,Factura), nl,write("Total",Total).
+opcion(N,Total,Factura):-N = 1, write("su descuento fue de 20% y no se aplica iva"), Total = Factura-(Factura*0.20).
+opcion(N,Total,Factura):-N = 2, write("su descuento fue de 15% y se aplica iva") , Total = ((Factura-(Factura*0.15))+(Factura*0.12)).
+opcion(N,Total,Factura):-N = 3, write("su descuento fue de 18% y no se aplica iva"), Total = Factura-(Factura*0.18).
+goal
+write("ingrese el valor de la factura "), nl, readint(M), ingreso(M).
